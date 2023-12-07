@@ -25,6 +25,7 @@ logger.info('Asteroid processing service')
 # Initiating and reading config values
 logger.info('Loading configuration from file')
 
+#Read configuration values from a file  ConfigParser() in python 
 try:
 	config = ConfigParser()
 	config.read('config.ini')
@@ -40,10 +41,12 @@ except:
 	logger.exception('')
 logger.info('DONE')
 
+#Create connection with database
 def init_db():
 	global connection
 	connection = mysql.connector.connect(host=mysql_config_mysql_host, database=mysql_config_mysql_db, user=mysql_config_mysql_user, password=mysql_config_mysql_pass)
 
+#Check connection with database
 def get_cursor():
 	global connection
 	try:
@@ -83,6 +86,7 @@ def mysql_insert_ast_into_db(create_date, hazardous, name, url, diam_min, diam_m
 		logger.error('Problem inserting asteroid values into DB: ' + str(e))
 		pass
 
+#Add new asteroid info in database. If data is already in database, then it just return "Ateroid already in DB"
 def push_asteroids_arrays_to_db(request_day, ast_array, hazardous):
 	for asteroid in ast_array:
 		if mysql_check_if_ast_exists_in_db(request_day, asteroid[9]) == 0:
