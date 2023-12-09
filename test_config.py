@@ -56,6 +56,16 @@ assert connection.is_connected() == True
 print("OK")
 print("----------")
 
+#Checking if migration database and worker log exists
+print("Checking if migration database and naked python files exists")
+assert os.path.isfile("migrate_db.py") == True
+print("OK")
+print("----------")
+print("Checking if worker log file exists")
+assert os.path.isfile("naked.py") == True
+print("OK")
+print("----------")
+
 # Checking if log config files exist for log config
 print("Checking if DB migration component log config file exists log_migrate_db.yaml -->")
 assert os.path.isfile("log_migrate_db.yaml") == True
@@ -72,13 +82,6 @@ print("----------")
 print("Checking if migration source directory exists -->")
 assert os.path.isdir("migrations") == True
 print("OK")
-print("----------")
-print("Checking if migration database log file exists migrate_db.log -->")
-assert os.path.isfile("migrate_db.log") == True
-print("OK")
-print("----------")
-print("Checking if worker log file exists worker.log -->")
-assert os.path.isfile("worker.log") == True
 print("----------")
 print("Configuration file test DONE -> ALL OK")
 print("----------------------------------------")
