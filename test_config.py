@@ -73,5 +73,12 @@ print("Checking if migration source directory exists -->")
 assert os.path.isdir("migrations") == True
 print("OK")
 print("----------")
+print("Checking if migration database log file exists migrate_db.log -->")
+assert os.path.isfile("migrate_db.log") == True
+print("OK")
+print("----------")
+print("Checking if worker log file exists worker.log -->")
+assert os.path.isfile("worker.log") == True
+print("----------")
 print("Configuration file test DONE -> ALL OK")
 print("----------------------------------------")
